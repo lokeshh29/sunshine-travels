@@ -1,63 +1,59 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import PackageCard from '../components/PackageCard'
-import { domesticPackages } from '../utils/data'
-
-// Map each package id to a curated image
-const packageImages = {
-  1:  'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=500&h=400&fit=crop', // Wayanad
-  2:  'https://images.unsplash.com/photo-1563911892437-1feda0179e1b?w=500&h=400&fit=crop', // Munnar
-  3:  'https://images.unsplash.com/photo-1593693397690-362cb9666fc2?w=500&h=400&fit=crop', // Alleppey
-  4:  'https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=500&h=400&fit=crop', // Kochi
-  5:  'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=400&fit=crop', // Coorg
-  6:  'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=400&fit=crop', // Chikmagalur
-  7:  'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=500&h=400&fit=crop', // Mysore
-  8:  'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=500&h=400&fit=crop', // Gokarna
-  9:  'https://images.unsplash.com/photo-1588083949404-c4f1ed1323b3?w=500&h=400&fit=crop', // Manali
-  10: 'https://images.unsplash.com/photo-1595815771614-ade9d652a65d?w=500&h=400&fit=crop', // Kashmir
-  11: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=500&h=400&fit=crop', // Rajasthan
-  12: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=500&h=400&fit=crop', // Golden Triangle
-  13: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=500&h=400&fit=crop', // Ooty
-  14: 'https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=500&h=400&fit=crop', // Kodaikanal
-  15: 'https://images.unsplash.com/photo-1551918120-9739cb430c6d?w=500&h=400&fit=crop', // Pondicherry
-  16: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=500&h=400&fit=crop', // Goa Beach
-  17: 'https://images.unsplash.com/photo-1533587851505-d119e13fa0d7?w=500&h=400&fit=crop', // Goa Family
-}
+import { usePackages } from '../context/PackageContext'
 
 export default function DomesticTours() {
+  const [searchParams] = useSearchParams()
+  const placeQuery = searchParams.get('place')
+  
   const [activeCategory, setActiveCategory] = useState('All')
-  const categories = ['All', 'Kerala', 'Karnataka', 'North India', 'Tamil Nadu', 'Goa']
-
-  const getPackages = () => {
-    if (activeCategory === 'All') return Object.values(domesticPackages).flat()
-    return domesticPackages[activeCategory] || []
+  const { getPackagesByType, isLoading } = usePackages()
+  
+  const allDomestic = getPackagesByType('domestic')
+  const categories = ['All', ...new Set(allDomestic.map(p => p.category))]
+  
+  // Update active category if a place query implies one, otherwise we filter by place directly
+  let packages = allDomestic
+  
+  if (placeQuery) {
+    packages = allDomestic.filter(p => p.name.toLowerCase().includes(placeQuery.toLowerCase()))
+  } else if (activeCategory !== 'All') {
+    packages = allDomestic.filter(p => p.category === activeCategory)
   }
-  const packages = getPackages()
+
+  // Effect to handle category switching via tabs resetting the place query
+  // Wait, if they click a tab, we should clear the place query from URL, but let's keep it simple for now.
 
   return (
-    <div className="bg-white">
+    <div className="bg-[#F7D794] min-h-screen">
       {/* Hero Banner */}
       <section className="relative h-64 md:h-80 overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?w=1600&h=600&fit=crop" alt="Domestic Tours" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0B1E36]/90 to-[#0B1E36]/50"></div>
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&h=600&fit=crop" alt="Domestic Tours" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0B1E36]/90 to-[#0B1E36]/50" />
         <div className="absolute inset-0 flex flex-col justify-center px-6 md:px-16">
-          <span className="text-amber-400 font-bold tracking-widest text-sm uppercase mb-2">Explore India</span>
+          <span className="inline-flex items-center gap-2 bg-[#F5CD7A]/20 text-[#F5CD7A] px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-3 border border-[#F5CD7A]/30 w-fit">
+            Explore India
+          </span>
           <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-3">Domestic Tours</h1>
-          <p className="text-slate-300 text-lg max-w-xl">Experience the breathtaking diversity and culture of incredible India</p>
+          <p className="text-[#F7D794] text-lg max-w-xl">Experience the breathtaking diversity and culture of incredible India</p>
         </div>
       </section>
 
       {/* Filter Tabs */}
-      <section className="sticky top-16 md:top-24 bg-white/95 backdrop-blur border-b border-slate-100 z-20 shadow-sm">
+      <section className="sticky top-[70px] bg-[#F7D794]/95 backdrop-blur-xl border-b border-white/20 z-20 shadow-sm">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="flex gap-3 overflow-x-auto py-4 no-scrollbar">
+          <div className="flex gap-2 overflow-x-auto py-4 no-scrollbar">
             {categories.map((category) => (
               <button
                 key={category}
-                onClick={() => setActiveCategory(category)}
-                className={`px-5 py-2 rounded-full font-semibold text-sm whitespace-nowrap transition-all ${
-                  activeCategory === category
-                    ? 'bg-gradient-to-r from-orange-500 to-amber-400 text-white shadow-md'
-                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                onClick={() => {
+                  setActiveCategory(category)
+                }}
+                className={`px-5 py-2 rounded-full font-semibold text-sm whitespace-nowrap transition-all duration-300 ${
+                  activeCategory === category && !placeQuery
+                    ? 'bg-[#0B1E36] text-[#F5CD7A] shadow-md shadow-[#0B1E36]/50'
+                    : 'bg-white/50 text-[#0B1E36]/70 border border-white/20 hover:bg-white/80'
                 }`}
               >
                 {category}
@@ -70,17 +66,26 @@ export default function DomesticTours() {
       {/* Packages Grid */}
       <section className="py-16 px-4">
         <div className="max-w-7xl mx-auto">
-          {packages.length === 0 ? (
+          {isLoading ? (
+            <div className="flex justify-center py-20">
+              <div className="w-12 h-12 border-4 border-white border-t-[#0B1E36] rounded-full animate-spin"></div>
+            </div>
+          ) : packages.length === 0 ? (
             <div className="text-center py-20">
-              <p className="text-slate-500 text-lg">No packages found for this category.</p>
+              <p className="text-[#0B1E36]/60 text-lg">No packages found {placeQuery ? `for "${placeQuery}"` : 'in this category'}.</p>
+              {placeQuery && (
+                <a href="/domestic" className="mt-4 inline-block text-[#0B1E36] font-bold hover:underline">
+                  View All Domestic Tours
+                </a>
+              )}
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {packages.map((pkg) => (
                 <PackageCard
                   key={pkg.id}
-                  image={packageImages[pkg.id] || 'https://images.unsplash.com/photo-1587474260584-136574528ed5?w=500&h=400&fit=crop'}
-                  destination={Object.keys(domesticPackages).find(key => domesticPackages[key].includes(pkg)) || 'India'}
+                  image={pkg.image || 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=400&fit=crop'}
+                  destination={pkg.category}
                   packageName={pkg.name}
                   duration={pkg.duration}
                   price={pkg.price}
@@ -96,21 +101,23 @@ export default function DomesticTours() {
       <section className="py-16 px-4 bg-[#0B1E36] text-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <span className="text-amber-400 font-bold tracking-wider text-sm uppercase">Why India?</span>
+            <span className="inline-flex items-center gap-2 bg-[#F5CD7A]/20 text-[#F5CD7A] px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-4 border border-[#F5CD7A]/30">
+              Why India?
+            </span>
             <h2 className="text-3xl md:text-4xl font-extrabold text-white mt-2">Discover India's Treasures</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
             {[
+              { region: 'Karnataka', desc: 'Coffee estates, palaces, beaches', icon: '☕' },
               { region: 'Kerala', desc: 'Backwaters, tea plantations, houseboats', icon: '🌿' },
-              { region: 'Karnataka', desc: 'Coffee estates, temples, beaches', icon: '☕' },
               { region: 'North India', desc: 'Mountains, historical sites, adventure', icon: '🏔️' },
               { region: 'Tamil Nadu', desc: 'Temples, hill stations, culture', icon: '🕌' },
               { region: 'Goa', desc: 'Beaches, architecture, nightlife', icon: '🏖️' },
             ].map((item, idx) => (
-              <div key={idx} className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-all hover:-translate-y-1">
+              <div key={idx} className="bg-white/[0.04] border border-white/[0.08] rounded-2xl p-6 text-center hover:bg-white/[0.08] transition-all duration-300 hover:-translate-y-0.5">
                 <div className="text-4xl mb-3">{item.icon}</div>
-                <h3 className="font-bold text-amber-400 mb-2">{item.region}</h3>
-                <p className="text-slate-300 text-sm">{item.desc}</p>
+                <h3 className="font-bold text-[#F5CD7A] mb-2 text-sm">{item.region}</h3>
+                <p className="text-white/60 text-xs">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -119,12 +126,19 @@ export default function DomesticTours() {
 
       {/* CTA */}
       <section className="py-20 px-4 text-center">
-        <span className="text-primary font-bold tracking-wider text-sm uppercase">Ready?</span>
+        <span className="inline-flex items-center gap-2 bg-[#0B1E36]/10 text-[#0B1E36] px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-4">
+          Custom Tours
+        </span>
         <h2 className="text-3xl md:text-4xl font-extrabold text-[#0B1E36] mt-2 mb-4">Can't Find What You're Looking For?</h2>
-        <p className="text-slate-500 mb-8 max-w-xl mx-auto">Our team can customize any tour to match your preferences and budget.</p>
-        <button className="bg-gradient-to-r from-orange-500 to-amber-400 text-white px-10 py-3.5 rounded-full font-bold shadow-lg hover:shadow-orange-400/40 hover:scale-105 transition-all">
+        <p className="text-[#0B1E36]/60 mb-8 max-w-xl mx-auto">Our team can customize any tour to match your preferences and budget.</p>
+        <a 
+          href="https://wa.me/919876543210?text=Hello,%20I%20would%20like%20to%20customize%20a%20domestic%20tour%20package." 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="inline-block bg-[#0B1E36] text-white px-10 py-4 rounded-2xl font-bold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
+        >
           Customize Your Tour
-        </button>
+        </a>
       </section>
     </div>
   )

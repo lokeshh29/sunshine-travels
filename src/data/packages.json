@@ -1,0 +1,447 @@
+[
+  {
+    "name": "Wayanad",
+    "type": "domestic",
+    "category": "Kerala",
+    "duration": "1 Nights 2 Days",
+    "price": 6495,
+    "image": "https://www.vetritoursntravels.com/wp-content/uploads/2024/06/way.jpg",
+    "featured": false,
+    "highlights": [
+      "Pickup at Calicut Junction & Proceed to Wayanad",
+      "Reaches Wayanad",
+      "Banasura Sagar Dam, Parrot Park",
+      "Karlad Lake"
+    ],
+    "id": "670e67fa-ab88-41c0-84fe-a4c5c93ce5b6",
+    "createdAt": 1783747953334
+  },
+  {
+    "name": "Munnar",
+    "type": "domestic",
+    "category": "Kerala",
+    "duration": "3 Days / 2 Nights",
+    "price": 18364,
+    "image": "https://www.vetritoursntravels.com/wp-content/uploads/2024/06/mun.jpg",
+    "featured": false,
+    "highlights": [
+      "Explore the beauty of Munnar",
+      "Local sightseeing in Munnar",
+      "Comfortable stay and travel"
+    ],
+    "id": "b54e2c82-3c10-4ecb-bbda-2389c5848bfd",
+    "createdAt": 1783747954638
+  },
+  {
+    "name": "Alappuzha",
+    "type": "domestic",
+    "category": "Kerala",
+    "duration": "1 Nights 2 Days",
+    "price": 9737,
+    "image": "https://www.vetritoursntravels.com//wp-content/uploads/2024/08/Untitled-design.jpg",
+    "featured": false,
+    "highlights": [
+      "Reaches Alleppey at 12 PM",
+      "Alleppey Beach"
+    ],
+    "id": "44c719a4-d141-4e15-b101-1d7c74407a24",
+    "createdAt": 1783747955895
+  },
+  {
+    "name": "Kochi",
+    "type": "domestic",
+    "category": "Kerala",
+    "duration": "1 Nights 2 Days",
+    "price": 5804,
+    "image": "https://www.vetritoursntravels.com//wp-content/uploads/2024/06/koch.jpg",
+    "featured": false,
+    "highlights": [
+      "Chotanikarai Temple",
+      "Vypin Beach"
+    ],
+    "id": "8cbf5d6f-26d6-4f70-baf6-459a6e15f4de",
+    "createdAt": 1783747957130
+  },
+  {
+    "name": "Vagamon",
+    "type": "domestic",
+    "category": "Kerala",
+    "duration": "1 Nights 2 Days",
+    "price": 11314,
+    "image": "https://www.vetritoursntravels.com//wp-content/uploads/2024/06/vag-1.jpg",
+    "featured": false,
+    "highlights": [
+      "Proceed to Vagamon",
+      "Idukki Dam Back View Point",
+      "Proceed to Ernakulam"
+    ],
+    "id": "6bc37179-8eb2-4a0c-a706-73e9e42cb312",
+    "createdAt": 1783747958317
+  },
+  {
+    "name": "Varkala",
+    "type": "domestic",
+    "category": "Kerala",
+    "duration": "1 Nights 2 Days",
+    "price": 17075,
+    "image": "https://www.vetritoursntravels.com//wp-content/uploads/2024/06/vark-min.jpg",
+    "featured": true,
+    "highlights": [
+      "Varkala Beach",
+      "Black Sand Beach",
+      "Kappil Beach"
+    ],
+    "id": "837cad42-e471-4361-9808-1c5744946232",
+    "createdAt": 1783747959479
+  },
+  {
+    "name": "Coorg",
+    "type": "domestic",
+    "category": "Karnataka",
+    "duration": "1 Nights 2 Days",
+    "price": 7620,
+    "image": "https://www.vetritoursntravels.com//wp-content/uploads/2024/06/coor.jpg",
+    "featured": true,
+    "highlights": [
+      "Pickup at Mysore and Proceed to Coorg",
+      "Tibetian Golden Temple",
+      "Proceed to Madikeri",
+      "Harangi Dam"
+    ],
+    "id": "ac240285-567c-4868-bb62-af899639b2ff",
+    "createdAt": 1783747960673
+  },
+  {
+    "name": "Chikkamagaluru",
+    "type": "domestic",
+    "category": "Karnataka",
+    "duration": "1 Nights 2 Days",
+    "price": 6446,
+    "image": "https://www.vetritoursntravels.com//wp-content/uploads/2024/06/chcik.jpg",
+    "featured": false,
+    "highlights": [
+      "Pickup at Bangalore and Proceed to Chickmangalur",
+      "Reaches Chickmangalur",
+      "Hoysaleshwara Temple",
+      "Proceed to Bangalore"
+    ],
+    "id": "fc1a68cf-568c-4bba-b85b-3b7a3c179723",
+    "createdAt": 1783747961782
+  },
+  {
+    "name": "Dandeli",
+    "type": "domestic",
+    "category": "Karnataka",
+    "duration": "1 Nights 2 Days",
+    "price": 11062,
+    "image": "https://www.vetritoursntravels.com/wp-content/uploads/2024/06/dan-1.jpg",
+    "featured": false,
+    "highlights": [
+      "Pickup at Hubli and Proceed to Dandeli",
+      "Moulangi Park",
+      "Crocodile Park",
+      "Supa Dam"
+    ],
+    "id": "dde55299-1c33-4144-87f9-340f7483257f",
+    "createdAt": 1783747963039
+  },
+  {
+    "name": "Gokarna",
+    "type": "domestic",
+    "category": "Karnataka",
+    "duration": "1 Nights 2 Days",
+    "price": 11325,
+    "image": "https://www.vetritoursntravels.com//wp-content/uploads/2024/06/gok-1.jpg",
+    "featured": true,
+    "highlights": [
+      "Pickup at Hubli and Proceed to Gokarna",
+      "Proceed to Vibuthi Falls",
+      "Om Beach",
+      "Kudle Beach"
+    ],
+    "id": "e22ad6e5-616d-4111-b222-b86547b6bb2b",
+    "createdAt": 1783747964305
+  },
+  {
+    "name": "Mysuru",
+    "type": "domestic",
+    "category": "Karnataka",
+    "duration": "1 Nights 2 Days",
+    "price": 13261,
+    "image": "https://www.vetritoursntravels.com//wp-content/uploads/2024/06/muzoo.jpg",
+    "featured": true,
+    "highlights": [
+      "Parrot Park",
+      "Krs Dam",
+      "Chamundi Temple"
+    ],
+    "id": "e870ece3-ee07-4994-aaad-66172e679a28",
+    "createdAt": 1783747965444
+  },
+  {
+    "name": "Hampi",
+    "type": "domestic",
+    "category": "Karnataka",
+    "duration": "2 Nights 3 Days",
+    "price": 11435,
+    "image": "https://www.vetritoursntravels.com//wp-content/uploads/2024/08/hampis.jpg",
+    "featured": false,
+    "highlights": [
+      "Reaches Bangalore by Night",
+      "Reaches Hospet by Morning",
+      "Proceed to Hampi",
+      "Virupaksha Temple"
+    ],
+    "id": "7dfb33ad-3dab-4759-a856-00d7fa9a7205",
+    "createdAt": 1783747966615
+  },
+  {
+    "name": "Pune",
+    "type": "domestic",
+    "category": "North India",
+    "duration": "3 Days / 2 Nights",
+    "price": 6190,
+    "image": "https://www.vetritoursntravels.com//wp-content/uploads/2024/08/punes.jpg",
+    "featured": true,
+    "highlights": [
+      "Explore the beauty of Pune",
+      "Local sightseeing in Pune",
+      "Comfortable stay and travel"
+    ],
+    "id": "e6afe5ef-787f-4c1d-ad20-a0759df9666b",
+    "createdAt": 1783747967764
+  },
+  {
+    "name": "Goa",
+    "type": "domestic",
+    "category": "North India",
+    "duration": "3 Days / 2 Nights",
+    "price": 8691,
+    "image": "https://www.vetritoursntravels.com/wp-content/uploads/2024/07/giva.jpg",
+    "featured": false,
+    "highlights": [
+      "Reaches Madgaon by Morning",
+      "Proceed to Site Seeing ( By Using Two Wheeler )",
+      "Calangute Beach",
+      "Baga Beach"
+    ],
+    "id": "64a8f424-ad1f-40ee-8e14-091a93543c22",
+    "createdAt": 1783747968958
+  },
+  {
+    "name": "Manali",
+    "type": "domestic",
+    "category": "North India",
+    "duration": "4 Nights 5 Days",
+    "price": 16348,
+    "image": "https://www.vetritoursntravels.com//wp-content/uploads/2024/07/mans.jpg",
+    "featured": false,
+    "highlights": [
+      "Hidimba Temple"
+    ],
+    "id": "93a4372c-4423-476e-9c92-1bd7d8fb725d",
+    "createdAt": 1783747970158
+  },
+  {
+    "name": "Golden Triangle",
+    "type": "domestic",
+    "category": "North India",
+    "duration": "4 Nights 5 Days",
+    "price": 5954,
+    "image": "https://www.vetritoursntravels.com//wp-content/uploads/2024/07/taj-mins.jpg",
+    "featured": false,
+    "highlights": [
+      "Toll Parking"
+    ],
+    "id": "4c3ecf94-adb3-4fdd-904d-81af9db4b710",
+    "createdAt": 1783747971437
+  },
+  {
+    "name": "Rajasthan",
+    "type": "domestic",
+    "category": "North India",
+    "duration": "3 Days / 2 Nights",
+    "price": 11036,
+    "image": "https://www.vetritoursntravels.com//wp-content/uploads/2024/08/Untitled-design-1.jpg",
+    "featured": true,
+    "highlights": [
+      "Explore the beauty of Rajasthan",
+      "Local sightseeing in Rajasthan",
+      "Comfortable stay and travel"
+    ],
+    "id": "e79ad5f8-538b-481e-b1e7-9393a824135e",
+    "createdAt": 1783747972668
+  },
+  {
+    "name": "Kashmir",
+    "type": "domestic",
+    "category": "North India",
+    "duration": "4 Nights 5 Days",
+    "price": 15791,
+    "image": "https://www.vetritoursntravels.com//wp-content/uploads/2024/06/kashm.jpg",
+    "featured": false,
+    "highlights": [
+      "Visit Cheshma Shahi ( The Royal Spring )",
+      "Visit Nishat Bagh (Garden of Pleasure )",
+      "Visit Shalimar Bagh (Adobe of Love )"
+    ],
+    "id": "f7886833-b041-4fcd-a000-171762d976d9",
+    "createdAt": 1783747974058
+  },
+  {
+    "name": "Ooty",
+    "type": "domestic",
+    "category": "Tamil Nadu",
+    "duration": "1 Nights 2 Days",
+    "price": 19558,
+    "image": "https://www.vetritoursntravels.com//wp-content/uploads/2024/08/oty.jpg",
+    "featured": false,
+    "highlights": [
+      "Proceed to Ooty from Coimbatore",
+      "Reaches Ooty"
+    ],
+    "id": "e3c3adf8-32cb-470d-bd73-b264de654481",
+    "createdAt": 1783747975429
+  },
+  {
+    "name": "Kodaikanal",
+    "type": "domestic",
+    "category": "Tamil Nadu",
+    "duration": "1 Nights 2 Days",
+    "price": 16400,
+    "image": "https://www.vetritoursntravels.com//wp-content/uploads/2024/08/kok.jpg",
+    "featured": false,
+    "highlights": [
+      "Pickup at Dindigul and Proceed to Kodaikanal",
+      "Mannavanur Lake"
+    ],
+    "id": "1dc960bf-dd42-4aae-b166-122fbc0eb50e",
+    "createdAt": 1783747976704
+  },
+  {
+    "name": "Pondy",
+    "type": "domestic",
+    "category": "Tamil Nadu",
+    "duration": "1 Nights 2 Days",
+    "price": 19138,
+    "image": "https://www.vetritoursntravels.com//wp-content/uploads/2024/07/pud.jpg",
+    "featured": true,
+    "highlights": [
+      "Serenity Beach",
+      "Rock Stone Beach"
+    ],
+    "id": "35107c31-d3e3-488b-a72d-e37a075d2135",
+    "createdAt": 1783747977976
+  },
+  {
+    "name": "Bali Experience",
+    "type": "international",
+    "category": "Bali",
+    "duration": "6 Nights 7 Days",
+    "price": 17062,
+    "image": "https://www.vetritoursntravels.com/wp-content/uploads/2024/07/balis.jpg",
+    "featured": true,
+    "highlights": [
+      "Pandawa Beach",
+      "Uluwatu Temple",
+      "Kintamani Village with Volcano & Lake Batur View",
+      "Ulun Danu Temple – Lake Beratan, Bedugul"
+    ],
+    "id": "91363695-6347-45e7-9dde-7c00617baa32",
+    "createdAt": 1783747979372
+  },
+  {
+    "name": "Discover Thailand",
+    "type": "international",
+    "category": "Thailand",
+    "duration": "02 Nights In Pattaya & 01 Night In Bangkok",
+    "price": 8664,
+    "image": "https://www.vetritoursntravels.com/wp-content/uploads/2024/07/thai-man.jpg",
+    "featured": true,
+    "highlights": [
+      "Explore the beauty of Discover Thailand",
+      "Local sightseeing in Discover Thailand",
+      "Comfortable stay and travel"
+    ],
+    "id": "e2ed408f-dc7e-4dca-a66e-18f982505d07",
+    "createdAt": 1783747980676
+  },
+  {
+    "name": "Magical Malaysia",
+    "type": "international",
+    "category": "Malaysia",
+    "duration": "3 Nights 4 Days",
+    "price": 18982,
+    "image": "https://www.vetritoursntravels.com/wp-content/uploads/2024/07/mals.jpg",
+    "featured": false,
+    "highlights": [
+      "Proceed to Half Day City tour",
+      "Enroute Visit Batu Caves",
+      "Enroute Visit Putraja"
+    ],
+    "id": "b01c6a6d-7516-4e93-9e10-a3e86b49b493",
+    "createdAt": 1783747982259
+  },
+  {
+    "name": "Singapore Sights",
+    "type": "international",
+    "category": "Singapore",
+    "duration": "3 Nights 4 Days",
+    "price": 14887,
+    "image": "https://www.vetritoursntravels.com/wp-content/uploads/2024/07/sing.jpg",
+    "featured": false,
+    "highlights": [
+      "Merlin Park",
+      "Thian Hock Keng Temple",
+      "Depart & Proceed to Airport to board your flight"
+    ],
+    "id": "6b6d4d78-8599-4905-9b60-d0b9907789ae",
+    "createdAt": 1783747983528
+  },
+  {
+    "name": "Sri Lankan Wonders",
+    "type": "international",
+    "category": "Sri Lanka",
+    "duration": "4 Nights 5 Days",
+    "price": 7620,
+    "image": "https://www.vetritoursntravels.com/wp-content/uploads/2024/07/srilan.jpg",
+    "featured": true,
+    "highlights": [
+      "Explore the beauty of Sri Lankan Wonders",
+      "Local sightseeing in Sri Lankan Wonders",
+      "Comfortable stay and travel"
+    ],
+    "id": "2eca495f-3c5f-415d-8f5c-5f029becf751",
+    "createdAt": 1783747985579
+  },
+  {
+    "name": "Dubai Delights",
+    "type": "international",
+    "category": "Dubai",
+    "duration": "3 Nights 4 Days",
+    "price": 18051,
+    "image": "https://www.vetritoursntravels.com/wp-content/uploads/2024/07/dubs.jpg",
+    "featured": false,
+    "highlights": [
+      "Explore the beauty of Dubai Delights",
+      "Local sightseeing in Dubai Delights",
+      "Comfortable stay and travel"
+    ],
+    "id": "804b3ecb-31da-4b4d-a2d9-8893415d4dab",
+    "createdAt": 1783747986866
+  },
+  {
+    "name": "Maldives Retreat",
+    "type": "international",
+    "category": "Maldives",
+    "duration": "3 Nights 4 Days",
+    "price": 15466,
+    "image": "https://www.vetritoursntravels.com/wp-content/uploads/2024/07/mals-1.jpg",
+    "featured": false,
+    "highlights": [
+      "Room Included - Beach Villa"
+    ],
+    "id": "2b276e1b-a752-4302-b762-05d9ddf183f1",
+    "createdAt": 1783747988326
+  }
+]

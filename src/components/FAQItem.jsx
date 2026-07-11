@@ -1,36 +1,44 @@
 import { ChevronDown } from 'lucide-react'
 import { useState } from 'react'
-import { useScrollAnimation } from '../utils/useScrollAnimation'
 
 export default function FAQItem({ question, answer }) {
   const [isOpen, setIsOpen] = useState(false)
-  const [ref, isVisible] = useScrollAnimation()
 
   return (
-    <div 
-      ref={ref}
-      className={`border-2 border-gray-300 rounded-lg overflow-hidden hover:shadow-lg hover:border-primary transition-all duration-300 group ${
-        isVisible ? 'fade-in-up' : 'opacity-0 translate-y-8'
+    <div
+      className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
+        isOpen
+          ? 'border-orange-200 bg-orange-50/30 shadow-sm'
+          : 'border-slate-200 bg-white hover:border-slate-300'
       }`}
-      style={{
-        transitionDelay: isVisible ? '0s' : '0s'
-      }}
     >
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full px-6 py-4 flex items-center justify-between hover:bg-gradient-to-r hover:from-primary/5 hover:to-accent/5 transition-all duration-300 group"
+        className="w-full px-6 py-5 flex items-center justify-between gap-4 text-left transition-colors duration-200"
       >
-        <span className="font-bold text-dark text-left group-hover:text-primary transition-colors duration-300">{question}</span>
-        <ChevronDown 
-          size={20} 
-          className={`text-primary transition-all duration-500 transform ${isOpen ? 'rotate-180 scale-125' : 'group-hover:rotate-12'}`}
-        />
+        <span className={`font-bold text-[15px] transition-colors duration-200 ${isOpen ? 'text-orange-600' : 'text-[#0B1E36]'}`}>
+          {question}
+        </span>
+        <div
+          className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
+            isOpen
+              ? 'bg-orange-500 text-white rotate-180'
+              : 'bg-slate-100 text-slate-500'
+          }`}
+        >
+          <ChevronDown size={16} />
+        </div>
       </button>
-      {isOpen && (
-        <div className="px-6 py-4 bg-gradient-to-r from-light to-white border-t-2 border-primary/20 text-gray-700 animate-slideInUp">
+
+      <div
+        className={`overflow-hidden transition-all duration-300 ease-in-out ${
+          isOpen ? 'max-h-[300px] pb-5' : 'max-h-0'
+        }`}
+      >
+        <div className="px-6 text-slate-600 text-[15px] leading-relaxed">
           {answer}
         </div>
-      )}
+      </div>
     </div>
   )
 }

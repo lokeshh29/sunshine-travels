@@ -1,31 +1,42 @@
-import { Star } from 'lucide-react'
+import { Star, Quote } from 'lucide-react'
 import { useScrollAnimation } from '../utils/useScrollAnimation'
 
 export default function TestimonialCard({ name, location, review, rating }) {
   const [ref, isVisible] = useScrollAnimation()
 
   return (
-    <div 
+    <div
       ref={ref}
-      className={`bg-white p-6 rounded-lg shadow-md border-l-4 border-primary hover:shadow-xl transition-all duration-500 transform card-hover ${
-        isVisible ? 'fade-in-up' : 'opacity-0 translate-y-8'
+      className={`bg-white rounded-3xl p-7 shadow-md border border-slate-100/50 transition-all duration-700 hover:-translate-y-1 hover:shadow-lg ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
-      style={{
-        transitionDelay: isVisible ? '0s' : '0s'
-      }}
     >
-      <div className="flex gap-1 mb-3 transform group-hover:scale-125 transition-transform duration-300 origin-left">
+      {/* Quote icon */}
+      <div className="w-10 h-10 bg-orange-50 rounded-2xl flex items-center justify-center mb-5">
+        <Quote size={18} className="text-orange-500" />
+      </div>
+
+      {/* Stars */}
+      <div className="flex gap-1 mb-4">
         {[...Array(rating)].map((_, i) => (
-          <Star key={i} size={16} className="fill-accent text-accent hover:rotate-180 transition-transform duration-300" style={{ transitionDelay: `${i * 50}ms` }} />
+          <Star key={i} size={15} className="fill-amber-400 text-amber-400" />
         ))}
       </div>
-      <p className="text-gray-700 mb-4 italic relative group-hover:text-dark transition-colors duration-300">
-        <span className="text-4xl text-primary absolute -top-4 -left-2 opacity-20">"</span>
-        {review}
+
+      {/* Review */}
+      <p className="text-slate-600 mb-6 leading-relaxed text-[15px]">
+        "{review}"
       </p>
-      <div className="transform group-hover:translate-x-2 transition-transform duration-300">
-        <p className="font-bold text-dark group-hover:text-primary transition-colors duration-300">{name}</p>
-        <p className="text-sm text-gray-600">{location}</p>
+
+      {/* Author */}
+      <div className="flex items-center gap-3 pt-5 border-t border-slate-100">
+        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-amber-400 flex items-center justify-center text-white font-bold text-sm shadow-sm">
+          {name.charAt(0)}
+        </div>
+        <div>
+          <p className="font-bold text-[#0B1E36] text-sm">{name}</p>
+          <p className="text-xs text-slate-400 font-medium">{location}</p>
+        </div>
       </div>
     </div>
   )

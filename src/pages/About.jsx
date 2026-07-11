@@ -36,9 +36,11 @@ export default function About() {
       {/* Hero Banner */}
       <section className="relative h-64 md:h-80 overflow-hidden">
         <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1600&h=600&fit=crop" alt="About" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0B1E36]/90 to-[#0B1E36]/50"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0B1E36]/90 to-[#0B1E36]/50" />
         <div className="absolute inset-0 flex flex-col justify-center px-6 md:px-16">
-          <span className="text-amber-400 font-bold tracking-widest text-sm uppercase mb-2">Our Story</span>
+          <span className="inline-flex items-center gap-2 bg-amber-400/20 text-amber-400 px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-3 border border-amber-400/30 w-fit">
+            Our Story
+          </span>
           <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-3">About Sunshine Holidays</h1>
           <p className="text-slate-300 text-lg max-w-xl">15+ years of travel excellence and commitment to unforgettable journeys</p>
         </div>
@@ -49,7 +51,9 @@ export default function About() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div>
-              <span className="text-primary font-bold tracking-wider text-sm uppercase">Since 2010</span>
+              <span className="inline-flex items-center gap-2 bg-orange-50 text-orange-600 px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-4">
+                Since 2010
+              </span>
               <h2 className="text-3xl md:text-4xl font-extrabold text-[#0B1E36] mt-2 mb-6">Our Story</h2>
               <p className="text-slate-600 mb-4 text-lg leading-relaxed">
                 Founded in 2010, Sunshine Holidays emerged from a simple dream: to make travel accessible, affordable, and unforgettable for everyone. Starting as a small travel desk in Chennai, we've grown into one of the most trusted names in the travel industry.
@@ -65,9 +69,9 @@ export default function About() {
               <img
                 src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&h=500&fit=crop"
                 alt="About Sunshine Holidays"
-                className="rounded-3xl shadow-2xl"
+                className="rounded-3xl shadow-xl"
               />
-              <div className="absolute -bottom-6 -left-6 bg-gradient-to-br from-orange-500 to-amber-400 text-white rounded-2xl p-5 shadow-xl">
+              <div className="absolute -bottom-6 -left-6 bg-gradient-to-br from-orange-500 to-amber-400 text-white rounded-2xl p-5 shadow-lg">
                 <p className="text-3xl font-extrabold">15+</p>
                 <p className="text-sm font-semibold opacity-90">Years of Excellence</p>
               </div>
@@ -79,11 +83,11 @@ export default function About() {
       {/* Stats */}
       <section className="py-16 px-4 bg-[#0B1E36]">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-5 text-center">
             {stats.map((stat, idx) => (
-              <div key={idx} className="bg-white/5 border border-white/10 rounded-2xl p-8">
-                <p className="text-5xl font-extrabold text-amber-400 mb-2">{stat.value}</p>
-                <p className="text-slate-300 font-medium">{stat.label}</p>
+              <div key={idx} className="bg-white/[0.04] border border-white/[0.08] rounded-3xl p-8 hover:bg-white/[0.08] transition-all duration-300">
+                <p className="text-4xl font-extrabold text-amber-400 mb-2">{stat.value}</p>
+                <p className="text-slate-400 font-medium text-sm">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -91,21 +95,21 @@ export default function About() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-20 px-4 bg-slate-50">
+      <section className="py-20 px-4 bg-slate-50/80">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-3xl p-8 shadow-lg border-t-4 border-orange-500 hover:-translate-y-1 transition-transform">
-              <div className="w-14 h-14 bg-orange-100 rounded-2xl flex items-center justify-center mb-6">
-                <Target size={28} className="text-orange-500" />
+            <div className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 hover:-translate-y-0.5 transition-all duration-300">
+              <div className="w-12 h-12 bg-orange-50 rounded-2xl flex items-center justify-center mb-6">
+                <Target size={24} className="text-orange-500" />
               </div>
               <h3 className="text-2xl font-extrabold text-[#0B1E36] mb-4">Our Mission</h3>
               <p className="text-slate-600 leading-relaxed">
                 To provide exceptional travel experiences that transform lives, create lasting memories, and inspire people to explore the world with confidence, comfort, and cultural respect.
               </p>
             </div>
-            <div className="bg-white rounded-3xl p-8 shadow-lg border-t-4 border-amber-400 hover:-translate-y-1 transition-transform">
-              <div className="w-14 h-14 bg-amber-100 rounded-2xl flex items-center justify-center mb-6">
-                <Heart size={28} className="text-amber-500" />
+            <div className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 hover:-translate-y-0.5 transition-all duration-300">
+              <div className="w-12 h-12 bg-amber-50 rounded-2xl flex items-center justify-center mb-6">
+                <Heart size={24} className="text-amber-500" />
               </div>
               <h3 className="text-2xl font-extrabold text-[#0B1E36] mb-4">Our Vision</h3>
               <p className="text-slate-600 leading-relaxed">
@@ -120,19 +124,21 @@ export default function About() {
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14">
-            <span className="text-primary font-bold tracking-wider text-sm uppercase">Our Edge</span>
+            <span className="inline-flex items-center gap-2 bg-orange-50 text-orange-600 px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-4">
+              Our Edge
+            </span>
             <h2 className="text-3xl md:text-4xl font-extrabold text-[#0B1E36] mt-2">Why Choose Us</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {whyUs.map((item, idx) => {
               const Icon = item.icon
               return (
-                <div key={idx} className="group p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 bg-white">
-                  <div className="w-14 h-14 bg-orange-50 group-hover:bg-orange-500 rounded-2xl flex items-center justify-center mb-6 transition-colors duration-300">
-                    <Icon size={26} className="text-orange-500 group-hover:text-white transition-colors duration-300" />
+                <div key={idx} className="group p-7 rounded-3xl border border-slate-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 bg-white">
+                  <div className="w-12 h-12 bg-orange-50 group-hover:bg-orange-500 rounded-2xl flex items-center justify-center mb-5 transition-colors duration-300">
+                    <Icon size={22} className="text-orange-500 group-hover:text-white transition-colors duration-300" />
                   </div>
-                  <h3 className="text-xl font-extrabold text-[#0B1E36] mb-3">{item.title}</h3>
-                  <p className="text-slate-500 leading-relaxed">{item.desc}</p>
+                  <h3 className="text-lg font-extrabold text-[#0B1E36] mb-2">{item.title}</h3>
+                  <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
                 </div>
               )
             })}
@@ -140,37 +146,22 @@ export default function About() {
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="py-20 px-4 bg-slate-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-14">
-            <span className="text-primary font-bold tracking-wider text-sm uppercase">The People</span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-[#0B1E36] mt-2">Meet Our Team</h2>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {team.map((member, idx) => (
-              <div key={idx} className="bg-white rounded-3xl p-6 text-center shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-                <img src={member.image} alt={member.name} className="w-20 h-20 rounded-2xl mx-auto mb-4 bg-slate-100 p-1" />
-                <h3 className="text-base font-extrabold text-[#0B1E36] mb-1">{member.name}</h3>
-                <p className="text-sm text-slate-500">{member.role}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* Core Values */}
       <section className="py-20 px-4 bg-[#0B1E36] text-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14">
-            <span className="text-amber-400 font-bold tracking-wider text-sm uppercase">What We Stand For</span>
+            <span className="inline-flex items-center gap-2 bg-amber-400/15 text-amber-400 px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-4 border border-amber-400/20">
+              What We Stand For
+            </span>
             <h2 className="text-3xl md:text-4xl font-extrabold text-white mt-2">Our Core Values</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
             {values.map((v, idx) => (
-              <div key={idx} className="bg-white/5 border border-white/10 rounded-2xl p-8 text-center hover:bg-white/10 transition-all">
-                <p className="text-2xl font-extrabold text-amber-400 mb-3">{v.label}</p>
-                <p className="text-slate-300 text-sm">{v.desc}</p>
+              <div key={idx} className="bg-white/[0.04] border border-white/[0.08] rounded-3xl p-8 text-center hover:bg-white/[0.08] transition-all duration-300">
+                <p className="text-xl font-extrabold text-amber-400 mb-3">{v.label}</p>
+                <p className="text-slate-400 text-sm">{v.desc}</p>
               </div>
             ))}
           </div>
@@ -179,12 +170,14 @@ export default function About() {
 
       {/* CTA */}
       <section className="py-20 px-4 text-center">
-        <span className="text-primary font-bold tracking-wider text-sm uppercase">Join Us</span>
+        <span className="inline-flex items-center gap-2 bg-orange-50 text-orange-600 px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-4">
+          Join Us
+        </span>
         <h2 className="text-3xl md:text-4xl font-extrabold text-[#0B1E36] mt-2 mb-4">Start Your Journey Today</h2>
         <p className="text-slate-500 mb-8 max-w-2xl mx-auto">
           Join thousands of satisfied travelers who've experienced the world with Sunshine Holidays.
         </p>
-        <button className="bg-gradient-to-r from-orange-500 to-amber-400 text-white px-10 py-3.5 rounded-full font-bold shadow-lg hover:shadow-orange-400/40 hover:scale-105 transition-all">
+        <button className="bg-gradient-to-r from-orange-500 to-amber-400 text-white px-10 py-4 rounded-2xl font-bold shadow-lg shadow-orange-200/50 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
           Contact Us Now
         </button>
       </section>

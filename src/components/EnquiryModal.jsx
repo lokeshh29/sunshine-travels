@@ -20,6 +20,19 @@ export default function EnquiryModal({ onClose, packageName = '' }) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    
+    let text = `*New Package Enquiry*\n`
+    text += `Name: ${formData.name}\n`
+    text += `Phone: ${formData.phone}\n`
+    text += `Email: ${formData.email}\n`
+    if (formData.packageName) text += `Package: ${formData.packageName}\n`
+    text += `Date: ${formData.travelDate}\n`
+    text += `Travelers: ${formData.travelers}\n`
+    if (formData.message) text += `Message: ${formData.message}`
+    
+    const encodedText = encodeURIComponent(text)
+    window.open(`https://wa.me/919876543210?text=${encodedText}`, '_blank')
+    
     setSubmitted(true)
     setTimeout(() => {
       setSubmitted(false)

@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import { Car, Users, Zap, MapPin, Clock, Shield, Send } from 'lucide-react'
+import { Car, Users, Zap, MapPin, Clock, Shield, Send, Bus } from 'lucide-react'
 import Toast from '../components/Toast'
 
 export default function CarRental() {
   const [showToast, setShowToast] = useState(false)
   const [submitted, setSubmitted] = useState(false)
-  const [formData, setFormData] = useState({ name: '', phone: '', pickupLocation: '', dropLocation: '', date: '', carType: '' })
+  const [formData, setFormData] = useState({ name: '', phone: '', pickupLocation: '', dropLocation: '', date: '', vehicleType: '' })
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -14,48 +14,63 @@ export default function CarRental() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    
+    let text = `*New Car/Bus Rental Booking*\n`
+    text += `Name: ${formData.name}\n`
+    text += `Phone: ${formData.phone}\n`
+    text += `Pickup: ${formData.pickupLocation}\n`
+    text += `Drop: ${formData.dropLocation}\n`
+    text += `Date: ${formData.date}\n`
+    text += `Vehicle: ${formData.vehicleType}`
+    
+    const encodedText = encodeURIComponent(text)
+    window.open(`https://wa.me/919876543210?text=${encodedText}`, '_blank')
+    
     setSubmitted(true)
     setTimeout(() => {
       setSubmitted(false)
-      setFormData({ name: '', phone: '', pickupLocation: '', dropLocation: '', date: '', carType: '' })
+      setFormData({ name: '', phone: '', pickupLocation: '', dropLocation: '', date: '', vehicleType: '' })
     }, 3000)
   }
 
   const services = [
     { icon: '🚗', title: 'Local Car Rental', desc: 'Explore Chennai and nearby areas with our daily rental options.', points: ['Hourly rentals available', 'Competitive daily rates', 'Chauffeur options'] },
     { icon: '🛣️', title: 'Outstation Rental', desc: 'Travel across states with our outstation rental services.', points: ['All-India network', 'Professional drivers', 'Fuel-efficient vehicles'] },
-    { icon: '✈️', title: 'Airport Transfer', desc: 'Quick and reliable airport pickups and drop-offs.', points: ['On-time guarantee', 'Flight tracking', 'Meet & greet service'] },
-    { icon: '🏢', title: 'Corporate Rental', desc: 'Professional car rental solutions for businesses.', points: ['Monthly contracts', 'Fleet options', 'Billing convenience'] },
+    { icon: '🚌', title: 'Bus Rental', desc: 'Luxury and mini bus rental for groups, events & corporate outings.', points: ['AC luxury buses', 'Mini bus for 20-30 pax', 'Volvo & push-back seats'] },
   ]
 
   const fleet = [
     { type: 'Sedan', desc: 'Perfect for couples and small groups', seats: '4 Seater', price: '₹1,500/day', icon: '🚙', featured: false },
     { type: 'SUV', desc: 'Spacious comfort for families', seats: '6-7 Seater', price: '₹2,500/day', icon: '🚙', featured: true },
     { type: 'Tempo Traveller', desc: 'Groups and large families', seats: '12-17 Seater', price: '₹4,000/day', icon: '🚐', featured: false },
+    { type: 'Mini Bus', desc: 'Medium groups & corporate events', seats: '20-30 Seater', price: '₹6,000/day', icon: '🚌', featured: false },
+    { type: 'Luxury Bus', desc: 'Large groups with premium comfort', seats: '35-50 Seater', price: '₹10,000/day', icon: '🚍', featured: true },
   ]
 
   const whyUs = [
     { icon: Car, title: 'Well-Maintained Fleet', desc: 'All vehicles are regularly serviced and equipped with latest safety features.' },
+    { icon: Bus, title: 'Bus Options Available', desc: 'Mini buses to luxury Volvo buses for groups, weddings & corporate events.' },
     { icon: Users, title: 'Professional Drivers', desc: 'Courteous, experienced drivers trained in customer service and safety.' },
     { icon: Zap, title: 'Best Prices', desc: 'Transparent pricing with no hidden charges. Best rates guaranteed.' },
     { icon: Shield, title: 'Fully Insured', desc: 'All vehicles are fully insured for your complete peace of mind.' },
     { icon: Clock, title: '24/7 Availability', desc: 'Round-the-clock availability for any emergency or last-minute bookings.' },
-    { icon: MapPin, title: 'Wide Coverage', desc: 'Serving Chennai and all major cities and towns across South India.' },
   ]
 
-  const inputClass = "w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all"
-  const labelClass = "block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5"
+  const inputClass = "w-full px-4 py-3 bg-slate-50/80 border border-slate-200 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-orange-400/50 focus:border-orange-300 transition-all"
+  const labelClass = "block text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-1.5"
 
   return (
-    <div className="bg-white">
+    <div className="bg-[#F7D794]">
       {/* Hero Banner */}
       <section className="relative h-64 md:h-80 overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1600&h=600&fit=crop" alt="Car Rental" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0B1E36]/90 to-[#0B1E36]/50"></div>
+        <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1600&h=600&fit=crop" alt="Car & Bus Rental" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0B1E36]/90 to-[#0B1E36]/50" />
         <div className="absolute inset-0 flex flex-col justify-center px-6 md:px-16">
-          <span className="text-amber-400 font-bold tracking-widest text-sm uppercase mb-2">Ride in Comfort</span>
-          <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-3">Car Rental Services</h1>
-          <p className="text-slate-300 text-lg max-w-xl">Comfortable and reliable car rentals in Chennai and beyond</p>
+          <span className="inline-flex items-center gap-2 bg-[#F5CD7A]/20 text-[#F5CD7A] px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-3 border border-[#F5CD7A]/30 w-fit">
+            Ride in Comfort
+          </span>
+          <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-3">Car & Bus Rental</h1>
+          <p className="text-[#F7D794] text-lg max-w-xl">Comfortable and reliable car & bus rentals in Chennai and beyond</p>
         </div>
       </section>
 
@@ -63,19 +78,21 @@ export default function CarRental() {
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14">
-            <span className="text-primary font-bold tracking-wider text-sm uppercase">What We Offer</span>
+            <span className="inline-flex items-center gap-2 bg-[#0B1E36]/10 text-[#0B1E36] px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-4">
+              What We Offer
+            </span>
             <h2 className="text-3xl md:text-4xl font-extrabold text-[#0B1E36] mt-2">Our Services</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((svc, idx) => (
-              <div key={idx} className="group bg-white rounded-3xl p-8 shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+              <div key={idx} className="group bg-white/50 rounded-3xl p-7 border border-white/20 hover:bg-white/80 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                 <div className="text-4xl mb-4">{svc.icon}</div>
-                <h3 className="text-xl font-extrabold text-[#0B1E36] mb-3">{svc.title}</h3>
-                <p className="text-slate-500 mb-5">{svc.desc}</p>
+                <h3 className="text-lg font-extrabold text-[#0B1E36] mb-2">{svc.title}</h3>
+                <p className="text-[#0B1E36]/70 text-sm mb-5">{svc.desc}</p>
                 <ul className="space-y-2">
                   {svc.points.map((pt, i) => (
-                    <li key={i} className="flex items-center gap-3 text-slate-600 text-sm">
-                      <span className="w-5 h-5 rounded-full bg-orange-100 text-orange-500 flex items-center justify-center text-xs font-bold flex-shrink-0">✓</span>
+                    <li key={i} className="flex items-center gap-3 text-[#0B1E36]/80 text-sm">
+                      <span className="w-5 h-5 rounded-full bg-[#0B1E36]/10 text-[#0B1E36] flex items-center justify-center text-xs font-bold flex-shrink-0">✓</span>
                       {pt}
                     </li>
                   ))}
@@ -90,25 +107,28 @@ export default function CarRental() {
       <section className="py-20 px-4 bg-[#0B1E36]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14">
-            <span className="text-amber-400 font-bold tracking-wider text-sm uppercase">Choose Your Ride</span>
+            <span className="inline-flex items-center gap-2 bg-[#F5CD7A]/20 text-[#F5CD7A] px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-4 border border-[#F5CD7A]/30">
+              Choose Your Ride
+            </span>
             <h2 className="text-3xl md:text-4xl font-extrabold text-white mt-2">Our Fleet</h2>
+            <p className="text-white/60 mt-3">Cars, tempo travelers & luxury buses for every occasion</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {fleet.map((car, idx) => (
-              <div key={idx} className={`rounded-3xl p-8 text-center relative overflow-hidden transition-all hover:-translate-y-2 ${
-                car.featured ? 'bg-gradient-to-br from-orange-500 to-amber-400 text-white shadow-2xl shadow-orange-500/30' : 'bg-white/5 border border-white/10 text-white hover:bg-white/10'
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {fleet.map((vehicle, idx) => (
+              <div key={idx} className={`rounded-3xl p-7 text-center relative overflow-hidden transition-all duration-300 hover:-translate-y-1 ${
+                vehicle.featured ? 'bg-[#F5CD7A] text-[#0B1E36] shadow-xl shadow-[#F5CD7A]/20' : 'bg-white/[0.04] border border-white/[0.08] text-white hover:bg-white/[0.08]'
               }`}>
-                {car.featured && <div className="absolute top-4 right-4 bg-white text-orange-500 text-xs font-extrabold px-3 py-1 rounded-full">POPULAR</div>}
-                <div className="text-6xl mb-5">{car.icon}</div>
-                <h3 className="text-2xl font-extrabold mb-2">{car.type}</h3>
-                <p className={`text-sm mb-5 ${car.featured ? 'text-orange-100' : 'text-slate-300'}`}>{car.desc}</p>
-                <div className="space-y-2 mb-6">
-                  <p className={`font-semibold text-sm ${car.featured ? 'text-white' : 'text-slate-300'}`}>👥 {car.seats}</p>
-                  <p className={`font-semibold text-sm ${car.featured ? 'text-white' : 'text-slate-300'}`}>❄️ AC & Music System</p>
-                  <p className={`text-xl font-extrabold ${car.featured ? 'text-white' : 'text-amber-400'}`}>From {car.price}</p>
+                {vehicle.featured && <div className="absolute top-4 right-4 bg-[#0B1E36] text-[#F5CD7A] text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">Popular</div>}
+                <div className="text-5xl mb-4">{vehicle.icon}</div>
+                <h3 className="text-xl font-extrabold mb-1">{vehicle.type}</h3>
+                <p className={`text-sm mb-5 ${vehicle.featured ? 'text-[#0B1E36]/70' : 'text-slate-400'}`}>{vehicle.desc}</p>
+                <div className="space-y-1.5 mb-5">
+                  <p className={`font-semibold text-sm ${vehicle.featured ? 'text-[#0B1E36]' : 'text-slate-300'}`}>👥 {vehicle.seats}</p>
+                  <p className={`font-semibold text-sm ${vehicle.featured ? 'text-[#0B1E36]' : 'text-slate-300'}`}>❄️ AC & Music System</p>
+                  <p className={`text-xl font-extrabold mt-3 ${vehicle.featured ? 'text-[#0B1E36]' : 'text-[#F5CD7A]'}`}>From {vehicle.price}</p>
                 </div>
-                <button className={`w-full py-3 rounded-xl font-bold transition-all hover:scale-105 ${
-                  car.featured ? 'bg-white text-orange-500 hover:bg-orange-50' : 'bg-gradient-to-r from-orange-500 to-amber-400 text-white'
+                <button className={`w-full py-3 rounded-2xl font-bold text-sm transition-all duration-300 hover:-translate-y-0.5 ${
+                  vehicle.featured ? 'bg-[#0B1E36] text-[#F5CD7A] hover:bg-[#153259] shadow-md' : 'bg-[#F5CD7A] text-[#0B1E36] shadow-md'
                 }`}>
                   Book Now
                 </button>
@@ -122,20 +142,22 @@ export default function CarRental() {
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14">
-            <span className="text-primary font-bold tracking-wider text-sm uppercase">Our Promise</span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-[#0B1E36] mt-2">Why Choose Our Car Rental?</h2>
+            <span className="inline-flex items-center gap-2 bg-[#0B1E36]/10 text-[#0B1E36] px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-4">
+              Our Promise
+            </span>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-[#0B1E36] mt-2">Why Choose Our Rentals?</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {whyUs.map((item, idx) => {
               const Icon = item.icon
               return (
-                <div key={idx} className="group flex gap-5 p-6 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all bg-white">
-                  <div className="w-12 h-12 bg-orange-50 group-hover:bg-orange-500 rounded-2xl flex items-center justify-center flex-shrink-0 transition-colors duration-300">
-                    <Icon size={22} className="text-orange-500 group-hover:text-white transition-colors duration-300" />
+                <div key={idx} className="group flex gap-4 p-6 rounded-3xl border border-white/20 bg-white/50 hover:bg-white/80 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                  <div className="w-12 h-12 bg-[#0B1E36]/10 group-hover:bg-[#0B1E36] rounded-2xl flex items-center justify-center flex-shrink-0 transition-colors duration-300">
+                    <Icon size={20} className="text-[#0B1E36] group-hover:text-[#F5CD7A] transition-colors duration-300" />
                   </div>
                   <div>
-                    <h3 className="font-extrabold text-[#0B1E36] mb-2">{item.title}</h3>
-                    <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
+                    <h3 className="font-extrabold text-[#0B1E36] mb-1 text-sm">{item.title}</h3>
+                    <p className="text-[#0B1E36]/70 text-sm leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
               )
@@ -145,10 +167,12 @@ export default function CarRental() {
       </section>
 
       {/* Booking Form */}
-      <section className="py-20 px-4 bg-slate-50">
+      <section className="py-20 px-4 bg-[#F5CD7A]/30">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-10">
-            <span className="text-primary font-bold tracking-wider text-sm uppercase">Quick Booking</span>
+            <span className="inline-flex items-center gap-2 bg-[#0B1E36]/10 text-[#0B1E36] px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-4">
+              Quick Booking
+            </span>
             <h2 className="text-3xl font-extrabold text-[#0B1E36] mt-2">Book Your Ride</h2>
           </div>
           {submitted ? (
@@ -185,17 +209,26 @@ export default function CarRental() {
                   <input type="date" name="date" value={formData.date} onChange={handleChange} required className={inputClass} />
                 </div>
                 <div>
-                  <label className={labelClass}>Car Type</label>
-                  <select name="carType" value={formData.carType} onChange={handleChange} required className={inputClass}>
-                    <option value="">Select car type</option>
-                    <option value="sedan">Sedan</option>
-                    <option value="suv">SUV</option>
-                    <option value="tempo">Tempo Traveller</option>
+                  <label className={labelClass}>Vehicle Type</label>
+                  <select name="vehicleType" value={formData.vehicleType} onChange={handleChange} required className={inputClass}>
+                    <option value="">Select vehicle type</option>
+                    <optgroup label="Cars">
+                      <option value="sedan">Sedan (4 Seater)</option>
+                      <option value="suv">SUV (6-7 Seater)</option>
+                    </optgroup>
+                    <optgroup label="Tempo Traveller">
+                      <option value="tempo-12">Tempo Traveller (12 Seater)</option>
+                      <option value="tempo-17">Tempo Traveller (17 Seater)</option>
+                    </optgroup>
+                    <optgroup label="Buses">
+                      <option value="mini-bus">Mini Bus (20-30 Seater)</option>
+                      <option value="luxury-bus">Luxury Bus (35-50 Seater)</option>
+                    </optgroup>
                   </select>
                 </div>
               </div>
-              <button type="submit" className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-amber-400 text-white py-3.5 rounded-xl font-bold text-base shadow-lg hover:shadow-orange-400/40 hover:scale-[1.01] transition-all">
-                <Send size={18} /> Request Booking
+              <button type="submit" className="w-full flex items-center justify-center gap-2 bg-[#0B1E36] text-white py-3.5 rounded-2xl font-bold text-sm shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                <Send size={16} /> Request Booking
               </button>
             </form>
           )}
