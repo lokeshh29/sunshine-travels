@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from 'react'
+import defaultPackages from '../data/packages.json'
 
 const PackageContext = createContext()
 
@@ -7,35 +8,50 @@ export function usePackages() {
 }
 
 export function PackageProvider({ children }) {
-  const [packages, setPackages] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
+  // Use localStorage in production, or fallback to default packages
+  const getInitialPackages = () => {
+    if (!import.meta.env.DEV) {
+      const saved = localStorage.getItem('sunshine_packages')
+      if (saved) return JSON.parse(saved)
+    }
+    return defaultPackages || []
+  }
 
-  // Load from local API on mount
+  const [packages, setPackages] = useState(getInitialPackages())
+  const [isLoading, setIsLoading] = useState(false)
+
+  // Load from local API ONLY on mount during development (to support the Vite server script)
   useEffect(() => {
-    fetch('/api/packages')
-      .then(res => res.json())
-      .then(data => {
-        setPackages(data)
-        setIsLoading(false)
-      })
-      .catch(err => {
-        console.error('Failed to load packages:', err)
-        setIsLoading(false)
-      })
+    if (import.meta.env.DEV) {
+      setIsLoading(true)
+      fetch('/api/packages')
+        .then(res => res.json())
+        .then(data => {
+          setPackages(data)
+          setIsLoading(false)
+        })
+        .catch(err => {
+          console.error('Failed to load packages:', err)
+          setIsLoading(false)
+        })
+    }
   }, [])
 
-  // Save to local API whenever packages change
+  // Save to local API in development, or localStorage in production
   const savePackages = async (newPackages) => {
-    try {
-      await fetch('/api/packages', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(newPackages),
-      })
-    } catch (err) {
-      console.error('Failed to save packages:', err)
+    if (import.meta.env.DEV) {
+      try {
+        await fetch('/api/packages', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newPackages),
+        })
+      } catch (err) {
+        console.error('Failed to save packages:', err)
+      }
+    } else {
+      // In production (Vercel), we can't write to local files, so we save to localStorage
+      localStorage.setItem('sunshine_packages', JSON.stringify(newPackages))
     }
   }
 
